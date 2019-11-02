@@ -116,7 +116,7 @@ $(function(){
     });
 });
 
-// 步骤4：复制如下代码到html中
+// 步骤4：复制如下代码到body中
 <input type="button" value="blue">
 <input type="button" value="red">
 <input type="button" value="green">
