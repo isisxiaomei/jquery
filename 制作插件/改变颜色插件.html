@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .cls {
+            width: 200px;
+            height: 200px;
+            margin-top: 30px;
+            margin-left: 30px;;
+            background-color: pink;
+            float: left;
+        }
+    </style>
+    <script src="jquery-3.4.1/jquery-3.4.1.min.js"></script>
+    <script src="changeColor.js"></script>
+    <script>
+        $.fn.changeColor = function (color){
+            $(".cls").css("backgroundColor", color);
+        }
+        $(function(){
+            $("input[type=button]").click( function(){
+                $(".cls").changeColor($(this).val());
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <input type="button" value="blue">
+    <input type="button" value="red">
+    <input type="button" value="green">
+    <div id="box">
+        <div class="cls"></div>
+        <div class="cls"></div>
+        <div class="cls"></div>
+    </div>
+</body>
+</html>
