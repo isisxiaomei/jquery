@@ -77,8 +77,29 @@
   });
 </script>
 ```
+# 3 制作过程
+## 3.1 css提取
++ 将如下的css提取到changeColor.css
+```css
+.cls {
+        width: 200px;
+        height: 200px;
+        margin-top: 30px;
+        margin-left: 30px;
+        background-color: pink;
+        float: left;
+    }
+```
+## 3.2 制作的jquery插件js提取
++ 将如下js提取到changeColor.js
+```js
+$.fn.changeColor = function(color) {
+    $(".cls").css("backgroundColor", color);
+};
+```
 
-# 3. 写插件使用教程
+
+# 4. 写插件使用教程
 
 ```js
 // 步骤1：引入外部css样式文件
