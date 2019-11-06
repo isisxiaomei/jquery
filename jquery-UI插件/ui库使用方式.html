@@ -4,22 +4,77 @@
     <meta charset="UTF-8" />
     <title>Document</title>
 
-    <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.css">
+    <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.css" />
     <!-- 如果导入了其它与jquery有关的js文件,那么jquery.js须在其它js的前面 -->
     <script src="jquery-3.4.1/jquery-3.4.1.js"></script>
     <script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <style>
+        #dialog-link {
+		padding: .4em 1em .4em 20px;
+		text-decoration: none;
+		position: relative;
+	}
+	#dialog-link span.ui-icon {
+		margin: 0 5px 0 0;
+		position: absolute;
+		left: .2em;
+		top: 50%;
+		margin-top: -8px;
+	}
+    </style>
     <script>
-      $(function(){
-        $("#slider").slider({
-          range: true,
-          values: [17, 67]
+      // Link to open the dialog
+      $(function() {
+        $( "#dialog" ).dialog({
+            autoOpen: false,
+            width: 400,
+            buttons: [
+                {
+                    text: "Ok",
+                    click: function() {
+                        $( this ).dialog( "close" );
+                        if($("#userName").val() == "xiaomei") {
+                            alert("登录成功了");
+                        }else{
+                            alert("fail");
+                        }
+                    }
+                },
+                {
+                    text: "Cancel",
+                    click: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            ]
         });
+        $("#dialog-link").click(function(event) {
+          $("#dialog").dialog("open");
+          event.preventDefault();
+        });
+
+        $("#dialog-link").hover(
+          function() {
+            $(this).addClass("ui-state-hover");
+          },
+          function() {
+            $(this).removeClass("ui-state-hover");
+          }
+        );
       });
     </script>
   </head>
   <body>
-    <!-- Slider -->
-    <h2 class="demoHeaders">Slider</h2>
-    <div id="slider"></div>
-  </body>
+        <h2 class="demoHeaders">Dialog</h2>
+        <p>
+            <button id="dialog-link" class="ui-button ui-corner-all ui-widget">
+                <span class="ui-icon ui-icon-newwin"></span>Open Dialog
+            </button>
+        </p>
+        <!-- ui-dialog -->
+<div id="dialog" title="Dialog Title">
+    登录:<input type="text" id="userName"><br>
+    密码:<input type="text"id="passwd">
+</div>
+
 </html>
